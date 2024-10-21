@@ -179,6 +179,14 @@ class Face extends Entity implements JsonSerializable {
 		$this->markFieldUpdated('landmarks');
 	}
 
+	public function getDescriptorArray(): array {
+		if(is_array($this->descriptor)) {
+		   return $this->descriptor;
+		} else {
+			return json_decode($this->descriptor, true);
+		}
+	}
+
 	public function getDescriptor(): string {
 		return json_encode($this->descriptor);
 	}
