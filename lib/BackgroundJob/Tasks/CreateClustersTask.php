@@ -324,7 +324,7 @@ class CreateClustersTask extends FaceRecognitionBackgroundTask {
 				$face1 = $faces[$i];
 				for ($j = $i; $j < $faces_count; $j++) {
 					$face2 = $faces[$j];
-					$distance = dlib_vector_length($face1['descriptor'], $face2['descriptor']);
+					$distance = dlib_vector_length($face1->getDescriptorArray(), $face2->getDescriptorArray());
 					if ($distance < $sensitivity) {
 						$edges[] = array($i, $j);
 					}
@@ -342,7 +342,7 @@ class CreateClustersTask extends FaceRecognitionBackgroundTask {
 				$face1 = $faces[$i];
 				for ($j = $i; $j < $faces_count; $j++) {
 					$face2 = $faces[$j];
-					$distance = Euclidean::distance($face1['descriptor'], $face2['descriptor']);
+					$distance = Euclidean::distance($face1->getDescriptorArray(), $face2->getDescriptorArray());
 					if ($distance < $sensitivity) {
 						$edges[] = array($i, $j);
 					}
